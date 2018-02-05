@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml" class="mcf-noframes chrome chrome54 chrome54_0 chrome54_0_2840 chrome54_0_2840_99 webkit webkit537 webkit537_36" 
+data-cookiesettings="loaded"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+<script type = "application/javascript" src="scripts/feedback.js"></script>
+<script type="text/javascript" src="scripts/jquery.min.js"></script>
+
+	<head>
+		<title>Nederlandstalige Feedback Bot</title>
+	</head>
+	<body onload='loadJSON()' >
+
+		<h2>Feedbackbot minimalistisch</h2>
+		<div id="conversation"></div>
+		<div><input type="hidden" id="conversation_context" /></div>
+		<div style="width: 800px">
+			<input type="text" id="input" onkeypress="process(event, this)" style="width:600px"/>
+			<button class="askbutton" type="button" onclick="loadJSON()">Vraag</button>
+		</div>
+
+	</body>
+</html>
