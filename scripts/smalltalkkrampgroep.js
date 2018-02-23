@@ -88,7 +88,7 @@ function loadJSON() {
 				var Image = document.createElement('img');
 				Image.ClassName = 'direct-chat-img';
 				Image.style = 'visible: hidden; display:none;';
-				var imgsrc = 'img/wavy.png';
+				var imgsrc = 'img/avatar1.png';
 				Image.src = (imgsrc);
 
 				var yourtext = document.createElement('div');
