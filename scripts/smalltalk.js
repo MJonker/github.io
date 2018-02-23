@@ -1,7 +1,7 @@
 // Fill $chatbotName with CLients chatbot-name
-var chatbotName = "wavy";
+var chatbotName = "baas";
 // Fill $userName with 'active' user-name
-var userName = "john doe";
+var userName = "jij";
 
 var conversationIndex = 1;
 var watsonContext = "";
