@@ -109,7 +109,7 @@ function loadJSON() {
 				spanImgright.appendChild(yourtext);
 				document.getElementById('input').value="";
 
-				watsonContext = jsonObj.context;
+				//watsonContext = jsonObj.context;
 				//console.log(watsonContext);
 				//updateWatsonContext(watsonContext);
 
