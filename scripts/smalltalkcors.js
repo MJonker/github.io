@@ -59,8 +59,13 @@ function loadJSON() {
 			var jsonBodyObj = data;
 			var jsonObj=jsonBodyObj.body;
 			console.log(jsonObj);
-			var responseMessages = jsonObj.text;
-			console.log("Responsemessage =" + responseMessages);
+			var responseMessages
+			if (jsonObj==null) {
+				responseMessages = jsonBodyObj.text;
+			} else {
+				responseMessages = jsonObj.text;
+			}
+			console.log("Responsemessages =" + responseMessages);
 
 			//loop through array with outputs
 			for(var i = 0; i < responseMessages.length; i++) {
