@@ -47,7 +47,7 @@ function loadJSON() {
 	}
 
 	//var url = "https://openwhisk.ng.bluemix.net/api/v1/web/e-office_development/baasgenerator/corsmiddleman.json";
-	var url = "https://openwhisk.eu-gb.bluemix.net/api/v1/web/MJonker_uk-dev/baas/corsmiddleman.json";
+	var url = "https://openwhisk.eu-gb.bluemix.net/api/v1/web/MJonker_uk-dev/baas/corsmiddleman.http";
 
 	$.ajax({
 		url: url,
