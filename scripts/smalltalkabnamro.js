@@ -1,5 +1,5 @@
 // Fill $chatbotName with CLients chatbot-name
-var chatbotName = "baas";
+var chatbotName = "jochem";
 // Fill $userName with 'active' user-name
 var userName = "jij";
 
@@ -46,8 +46,7 @@ function loadJSON() {
 		dialog.context=watsonContext;
 	}
 
-	var url = "https://openwhisk.ng.bluemix.net/api/v1/web/e-office_development/default/talksmall.json"; //BELANGRIJK
-	//var url = "http://localhost:9080/api/chatbotpostnl"; //local
+	var url = "https://openwhisk.eu-gb.bluemix.net/api/v1/web/e-office_Baas%20Production/baas/abnamrotrial.json"; //BELANGRIJK
 
 	$.ajax({
 		url: url,
@@ -88,7 +87,7 @@ function loadJSON() {
 				var Image = document.createElement('img');
 				Image.ClassName = 'direct-chat-img';
 				Image.style = 'visible: hidden; display:none;';
-				var imgsrc = 'img/wavy.png';
+				var imgsrc = 'img/avatar1.png';
 				Image.src = (imgsrc);
 
 				var yourtext = document.createElement('div');

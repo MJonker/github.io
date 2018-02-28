@@ -46,8 +46,8 @@ function loadJSON() {
 		dialog.context=watsonContext;
 	}
 
-	var url = "https://openwhisk.ng.bluemix.net/api/v1/web/e-office_development/default/talksmall.json"; //BELANGRIJK
-	//var url = "http://localhost:9080/api/chatbotpostnl"; //local
+	//var url = "https://openwhisk.ng.bluemix.net/api/v1/web/e-office_development/baasgenerator/corsmiddleman.json";
+	var url = "https://openwhisk.eu-gb.bluemix.net/api/v1/web/MJonker_uk-dev/baas/corsmiddleman.http";
 
 	$.ajax({
 		url: url,
@@ -60,8 +60,13 @@ function loadJSON() {
 			var jsonBodyObj = data;
 			var jsonObj=jsonBodyObj.body;
 			console.log(jsonObj);
-			var responseMessages = jsonObj.text;
-			console.log("Responsemessage =" + responseMessages);
+			var responseMessages
+			if (jsonObj==null) {
+				responseMessages = jsonBodyObj.text;
+			} else {
+				responseMessages = jsonObj.text;
+			}
+			console.log("Responsemessages =" + responseMessages);
 
 			//loop through array with outputs
 			for(var i = 0; i < responseMessages.length; i++) {
@@ -88,7 +93,7 @@ function loadJSON() {
 				var Image = document.createElement('img');
 				Image.ClassName = 'direct-chat-img';
 				Image.style = 'visible: hidden; display:none;';
-				var imgsrc = 'img/wavy.png';
+				var imgsrc = 'img/avatar2.png';
 				Image.src = (imgsrc);
 
 				var yourtext = document.createElement('div');
@@ -105,7 +110,7 @@ function loadJSON() {
 				spanImgright.appendChild(yourtext);
 				document.getElementById('input').value="";
 
-				watsonContext = jsonObj.context;
+				//watsonContext = jsonObj.context;
 				//console.log(watsonContext);
 				//updateWatsonContext(watsonContext);
 
