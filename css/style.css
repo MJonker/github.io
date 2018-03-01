@@ -12,7 +12,26 @@ html {
 body {
 	font-family: Roboto;
   height: 100%;
-	padding-bottom: calc(67px + .2em);
+	/* padding-bottom: calc(67px + .2em); */
+	background:#fff url(../img/background.jpg);
+	background-size:cover;
+	overflow:hidden;
+}
+.whitelayer {
+	background:rgba(255,255,255, .6);
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+.wrap {
+	display:block;
+	width:100%;
+	height:100%;
+	border-radius:5px;
+	overflow:hidden;
+	margin:10% auto;
+	margin-top:0;
+	position:relative;
 }
 header  {
 	display:block;
@@ -21,18 +40,57 @@ header  {
 	background:#15822F;
 	background:#2B9A44;
 	padding:.5em;
+	text-align:center;
 }
 main {
-	padding-bottom: 41px;
+	/* padding-bottom: 41px; */
 	overflow-y: scroll;
 	height: 100%;
+	background:#fff;
+  height: calc(100% - 108px);
 }
+#backButton {
+	position:relative;
+	background:#F29108;
+	display:block;
+	color:#fff;
+  padding: .6em 1.2em;
+	z-index:999;
+	border-radius: 0 0 5px 5px;
+  margin: -10% auto 0;
+	width:140px;
+	text-decoration: none;
+	text-align:center;
+}
+#backButton span {
+	font-weight:bold;
+}
+#logoOrange a {
+	display:block;
+	width:100%;
+	height:100%;
+}
+#logoOrange {
+	bottom:0;
+	top:10%;
+	right:auto;
+	margin:auto;
+	position:relative;
+	background:url(../img/logo.png)no-repeat center;
+	background-size:contain;
+	text-indent:-9999em;
+	width:200px;
+	height:100px;
+}
+
 .botname {
 	color:#fff;
 	height:51px;
 	display:inline-block;
+	vertical-align: middle;
   padding: 0.5em;
 	line-height: 1em;
+	text-align:left;
 }
 .botname h2{
 	font-size:1em;
@@ -40,10 +98,11 @@ main {
 .botname span{
 	font-size:.666em;
 }
-
 .wavy {
-	float:left;
 	height:51px;
+	display:inline-block;
+	vertical-align: middle;
+  filter: drop-shadow(0px 0px 4px #0a3e17);
 }
 .conversationQuestion {
 	color: #F00;
@@ -87,6 +146,7 @@ div[id^="r"] {
 	display:inline-block;
 	vertical-align:middle;
 	padding:.2em .5em;
+	border:0;
 }
 
 button {
@@ -109,9 +169,11 @@ button {
 	margin:0;
 	margin-left:-4px;
 	width:64px;
-	height:40px;
+	height:41px;
 	display:inline-block;
 	vertical-align:middle;
+	background-color: #fff;
+	color: #999;
 }
 
 #button-yes {
@@ -135,11 +197,12 @@ button {
 }
 
 footer {
-}
-.bottom {
 	width:100%;
 	position: absolute;
 	bottom:0;
+}
+.bottom {
+	height:40px;
 }
 
 /*==========  Mobile First Method  ==========*/
@@ -151,17 +214,50 @@ footer {
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
-
+	.wrap {
+    display: block;
+    width: 480px;
+    height: 480px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10% auto;
+    position: relative;
+	}
 }
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-
+	.wrap {
+		left:-5%;
+	}
+	#backButton {
+	    position: absolute;
+	    left: 0;
+	    top: 32%;
+	    background: #F29108;
+	    color: #fff;
+	    padding: .5em 1em;
+	    transform: rotate(90deg);
+	    transform-origin: left bottom;
+	    margin-top: -37px;
+	    z-index: 999;
+	    border-radius: 5px 5px 0 0;
+	}
+	#logoOrange {
+		left:-5%;
+	}
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
-
+	#logoOrange {
+		position:absolute;
+		right:10%;
+		left:auto;
+		top:35%;
+		bottom:auto;
+		/* background:#F29108; */
+	}
 }
 
 /* Large Devices, Wide Screens */

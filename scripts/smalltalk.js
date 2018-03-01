@@ -42,12 +42,11 @@ function loadJSON() {
 
 	console.log(watsonContext)
 	if (watsonContext != "") {
-		updateWatsonContext(watsonContext); //Retrieve timestamps and returns them to Conversation Service within context variable
+		
 		dialog.context=watsonContext;
 	}
 
-	var url = "https://openwhisk.ng.bluemix.net/api/v1/web/e-office_development/default/talksmall.json"; //BELANGRIJK
-	//var url = "http://localhost:9080/api/chatbotpostnl"; //local
+	var url = document.getElementById("endpoint").value;
 
 	$.ajax({
 		url: url,
@@ -60,8 +59,13 @@ function loadJSON() {
 			var jsonBodyObj = data;
 			var jsonObj=jsonBodyObj.body;
 			console.log(jsonObj);
-			var responseMessages = jsonObj.text;
-			console.log("Responsemessage =" + responseMessages);
+			var responseMessages
+			if (jsonObj==null) {
+				responseMessages = jsonBodyObj.text;
+			} else {
+				responseMessages = jsonObj.text;
+			}
+			console.log("Responsemessages =" + responseMessages);
 
 			//loop through array with outputs
 			for(var i = 0; i < responseMessages.length; i++) {
@@ -88,7 +92,7 @@ function loadJSON() {
 				var Image = document.createElement('img');
 				Image.ClassName = 'direct-chat-img';
 				Image.style = 'visible: hidden; display:none;';
-				var imgsrc = 'img/wavy.png';
+				var imgsrc = 'img/avatar1.png';
 				Image.src = (imgsrc);
 
 				var yourtext = document.createElement('div');
@@ -121,162 +125,6 @@ function loadJSON() {
 	});
 }
 
-function updateWatsonContext(watsonContext) {
-	console.log(watsonContext)
-	var username = retrieveUsername(watsonContext);
-	watsonContext['username'] = username;
-
-	//if(watsonContext.hasOwnProperty('time') && watsonContext.hasOwnProperty('officialtime') && watsonContext.hasOwnProperty('date')) {
-	var timestamps = retrieveTimeStamp();
-	//[time, officialtime, date, timeindication] = retrieveTimeStamp();
-	watsonContext['time'] = timestamps[0];
-	watsonContext['officialtime'] = timestamps[1];
-	watsonContext['date'] = timestamps[2];
-	watsonContext['timeindication'] = timestamps[3];
-	//}
-	return watsonContext;
-}
-
-function retrieveUsername(watsonContext) {
-	var username = '';
-	return username;
-}
-
-function retrieveTimeStamp() {
-	//Day
-	var day = new Date().getDay();
-	switch (day) {
-	    case 0:
-	        day = "zondag";
-	        break;
-	    case 1:
-	        day = "maandag";
-	        break;
-	    case 2:
-	        day = "dinsdag";
-	        break;
-	    case 3:
-	        day = "woensdag";
-	        break;
-	    case 4:
-	        day = "donderdag";
-	        break;
-	    case 5:
-	        day = "vrijdag";
-	        break;
-	    case  6:
-	        day = "zaterdag";
-	        break;
-	}
-
-	//Date
-	var date = day + " " + new Date().getDate() + "-" + (new Date().getMonth() + 1)  + "-" + new Date().getFullYear();
-
-	//Official time
-	var hours = new Date().getHours();
-	var minutes = new Date().getMinutes();
-	var officialtime = "";
-
-	if (hours < 10 && minutes < 10) {
-		officialtime = "0" + hours + ":0" + minutes;
-	}
-	else if (hours < 10 && minutes >= 10) {
-		officialtime = "0" + hours + ":" + minutes;
-	}
-	else if (minutes < 10) {
-		officialtime = hours + ":" + "0" + minutes;
-	}
-	else {
-		officialtime = hours + ":" + minutes;
-	}
-
-	//Time indication
-	var timeindication;
-
-	if (hours >= 0 && hours < 6) {
-		timeindication = "goede nacht";
-	}
-	else if (hours >= 6 && hours < 12) {
-		timeindication = "goede morgen";
-	}
-	else if (hours >= 12 && hours < 18) {
-		timeindication = "goede middag";
-	}
-	else {
-		timeindication = "goede avond";
-	}
-
-	//Spoken numbers
-	if (hours > 12) {
-		hours = hours - 12;
-	}
-	var currenttime = "";
-	while (currenttime == "") {
-		if (minutes == 0) {
-			currenttime += (toSpeech(hours));
-			currenttime += (" uur");
-		}
-		else if (minutes < 15) {
-			currenttime += (toSpeech(minutes));
-			currenttime += (" over ");
-			currenttime += (toSpeech(hours));
-		}
-		else if (minutes == 15) {
-			minutes = "kwart over ";
-			currenttime += toSpeech(hours);
-		}
-		else if (minutes < 30) {
-			currenttime += (toSpeech(30 - minutes));
-			currenttime += (" voor half ");
-			currenttime = updateCurrentTime(hours, currenttime);
-		}
-		else if (minutes == 30) {
-			currenttime += ("half ");
-			currenttime = updateCurrentTime(hours, currenttime);
-		}
-		else if (minutes < 45) {
-			currenttime += (toSpeech(minutes - 30));
-			currenttime += (" over half ");
-			currenttime = updateCurrentTime(hours, currenttime);
-		}
-		else if (minutes == 45) {
-			currenttime += ("kwart voor ");
-			currenttime = updateCurrentTime(hours, currenttime);
-		}
-		else {
-			currenttime += (toSpeech(60 - minutes));
-			currenttime += (" voor ");
-			currenttime = updateCurrentTime(hours, currenttime);
-		}
-	}
-	var timearray = [currenttime, officialtime, date, timeindication];
-	return timearray;
-}
-
-//Reoccuring pattern functionalized
-function updateCurrentTime(hours, currenttime) {
-	if (hours != 12) {
-		currenttime += (toSpeech(hours + 1));
-	}
-	else {
-		currenttime += (toSpeech(1));
-	}
-	return currenttime;
-}
-
-//Spoken time
-function toSpeech(number) {
-	var toSpeech = {1: "één", 2: "twee", 3: "drie", 4: "vier", 5: "vijf", 6: "zes", 7: "zeven", 8: "acht", 9: "negen", 10: "tien",
-	11: "elf", 12: "twaalf", 13: "dertien", 14: "veertien"};
-	/*
-	15: "vijftien", 16: "zestien", 17: "zeventien", 18: "achttien", 19: "negetien", 20: "twintig",
-	21: "éénentwintig", 22: "tweeëntwintig", 23: "drieëntwintig", 24: "vierentwintig", 25: "vijfentwintig", 26: "zesentwintig", 27: "zevenentwintig", 28: "achtentwintig", 29: "negenentwintig", 30: "dertig",
-	31: "éénendertig", 32: "tweeënertig", 33: "drieëndertig", 34: "vierendertig", 35: "vijfendertig", 36: "zesendertig", 37: "zevenendertig", 38: "achtendertig", 39: "negenendertig", 40: "veertig",
-	41: "éénenveertig", 42: "tweeënveertig", 43: "drieënveertig", 44: "vierenveertig", 45: "vijfenveertig", 46: "zesenveertig", 47: "zevenenveertig", 48: "achtenveertig", 49: "negenenveertig", 50: "vijftig",
-	51: "éénenvijftig", 52: "tweeënvijftig", 53: "drieënvijftig", 54: "vierenvijftig", 55: "vijfenvijftig", 56: "zesenvijftig", 57: "zevenenvijftig", 58: "achtenvijftig", 59: "negenenvijftig", 60: "zestig",
-	*/
-	return toSpeech[number];
-}
 
 function yesbye() {
 	document.getElementById('input').value="yes";
