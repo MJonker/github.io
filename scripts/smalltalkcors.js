@@ -42,7 +42,7 @@ function loadJSON() {
 
 	console.log(watsonContext)
 	if (watsonContext != "") {
-		updateWatsonContext(watsonContext); //Retrieve timestamps and returns them to Conversation Service within context variable
+		
 		dialog.context=watsonContext;
 	}
 
