@@ -205,62 +205,124 @@ footer {
 	height:40px;
 }
 
-/*==========  Mobile First Method  ==========*/
-
 /* Custom, iPhone Retina */
+
 @media only screen and (min-width : 320px) {
 
+ 
+
 }
+
+ 
 
 /* Extra Small Devices, Phones */
+
 @media only screen and (min-width : 480px) {
-	.wrap {
+
+               .wrap {
+
     display: block;
+
     width: 480px;
+
     height: 480px;
+
     border-radius: 5px;
+
     overflow: hidden;
+
     margin: 10% auto;
+
     position: relative;
-	}
+
+               }
+
 }
+
+ 
 
 /* Small Devices, Tablets */
+
 @media only screen and (min-width : 768px) {
-	.wrap {
-		left:-5%;
-	}
-	#backButton {
-	    position: absolute;
-	    left: 0;
-	    top: 32%;
-	    background: #F29108;
-	    color: #fff;
-	    padding: .5em 1em;
-	    transform: rotate(90deg);
-	    transform-origin: left bottom;
-	    margin-top: -37px;
-	    z-index: 999;
-	    border-radius: 5px 5px 0 0;
-	}
-	#logoOrange {
-		left:-5%;
-	}
+
+               .wrap {
+
+                              left:-5%;
+
+                              margin-bottom:0;
+
+               }
+
+               #backButton {
+
+                   position: absolute;
+
+                   left: 0;
+
+                   top: 32%;
+
+                   background: #F29108;
+
+                   color: #fff;
+
+                   padding: .5em 1em;
+
+                   transform: rotate(90deg);
+
+                   transform-origin: left bottom;
+
+                   margin-top: -37px;
+
+                   z-index: 999;
+
+                   border-radius: 5px 5px 0 0;
+
+                                             width:200px;
+
+               }
+
+               #logoOrange {
+
+                              top:0;
+
+                              left:-5%;
+
+               }
+
 }
+
+ 
 
 /* Medium Devices, Desktops */
+
 @media only screen and (min-width : 992px) {
-	#logoOrange {
-		position:absolute;
-		right:10%;
-		left:auto;
-		top:35%;
-		bottom:auto;
-		/* background:#F29108; */
-	}
+
+               #logoOrange {
+
+                              position:absolute;
+
+                              right:10%;
+
+                              left:auto;
+
+                              top:35%;
+
+                              bottom:auto;
+
+                              /* background:#F29108; */
+
+               }
+
 }
+
+ 
 
 /* Large Devices, Wide Screens */
+
 @media only screen and (min-width : 1200px) {
 
+ 
+
 }
+
+
