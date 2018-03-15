@@ -38,6 +38,8 @@ function loadJSON() {
 		qNnewDiv.appendChild(qtext);
 		document.getElementById("conversation").appendChild(qTOAdd);
 		scrolldown();
+		document.getElementById('input').value="";
+
 	}
 
 	console.log(watsonContext)
@@ -107,8 +109,7 @@ function loadJSON() {
 				newDiv.appendChild(spanImgright);
 				spanImgleft.appendChild(Image);
 				spanImgright.appendChild(yourtext);
-				document.getElementById('input').value="";
-
+				
 				watsonContext = jsonObj.context;
 				//console.log(watsonContext);
 				//updateWatsonContext(watsonContext);
