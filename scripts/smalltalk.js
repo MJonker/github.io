@@ -63,10 +63,10 @@ function loadJSON() {
 			console.log(jsonObj);
 			var responseMessages
 			if (jsonObj==null) {
-				responseMessages = jsonBodyObj.text;
-			} else {
-				responseMessages = jsonObj.text;
-			}
+				jsonObj=jsonBodyObj;
+			} 
+			responseMessages = jsonObj.text;
+			
 			console.log("Responsemessages =" + responseMessages);
 
 			//loop through array with outputs
