@@ -86,16 +86,9 @@ function loadJSON() {
 				YourChatname.className = 'direct-chat-name pull-left';
 				YourChatname.innerHTML= chatbotName; //$Botname
 
-				var spanImgleft = document.createElement('span');
-				spanImgleft.ClassName = 'spanImgleft';
-
+				
 				var spanImgright = document.createElement('span');
-				spanImgleft.ClassName = 'spanImgright';
-				var Image = document.createElement('img');
-				Image.ClassName = 'direct-chat-img';
-				Image.style = 'visible: hidden; display:none;';
-				var imgsrc = 'img/avatar1.png';
-				Image.src = (imgsrc);
+				
 
 				var yourtext = document.createElement('div');
 				yourtext.className='direct-chat-text';
@@ -105,9 +98,9 @@ function loadJSON() {
 				toAdd.appendChild(newDiv);
 				newDiv.appendChild(clearfixright);
 				clearfixright.appendChild(YourChatname);
-				newDiv.appendChild(spanImgleft);
+				
 				newDiv.appendChild(spanImgright);
-				spanImgleft.appendChild(Image);
+				
 				spanImgright.appendChild(yourtext);
 				
 				watsonContext = jsonObj.context;
